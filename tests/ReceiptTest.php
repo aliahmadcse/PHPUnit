@@ -9,11 +9,17 @@ use TDD\Receipt;
 
 class ReceiptTest extends TestCase
 {
+    /**
+     * to instantiate the class whose methods are going to be tested
+     */
     public function setUp()
     {
         $this->Receipt = new Receipt();
     }
 
+    /**
+     * to unset the object of the tested class
+     */
     public function tearDonw()
     {
         unset($this->Receipt);
@@ -22,11 +28,24 @@ class ReceiptTest extends TestCase
     public function testTotal()
     {
         $input = [0, 2, 5, 8];
-        $output = $this->Receipt->total($input);
+        $coupon = null;
+        $output = $this->Receipt->total($input, $coupon);
         $this->assertEquals(
             15,
             $output,
             'When summing the total should equal 15'
+        );
+    }
+
+    public function testTotalAndCoupon()
+    {
+        $input = [0, 2, 5, 8];
+        $coupon = 0.20;
+        $output = $this->Receipt->total($input, $coupon);
+        $this->assertEquals(
+            12,
+            $output,
+            'When summing the total should equal 12'
         );
     }
 
@@ -41,6 +60,4 @@ class ReceiptTest extends TestCase
             'The tax calculation must be equal 1.00'
         );
     }
-
-    
 }
