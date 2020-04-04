@@ -41,4 +41,6 @@ class ReceiptTest extends TestCase
             'The tax calculation must be equal 1.00'
         );
     }
+
+    
 }
